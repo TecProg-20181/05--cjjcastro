@@ -1,7 +1,6 @@
 from diskspace import diskspace
 
 import unittest
-from mock import MagicMock
 import StringIO
 import sys
 
@@ -12,7 +11,7 @@ import re
 
 class TestSubprocessCheckOutput(unittest.TestCase):
 
-    def test_output(self):
+    def test_return(self):
         command = 'du'
         output = subprocess.check_output(command)
         self.assertEqual(diskspace.subprocess_check_output(command), output)
@@ -20,7 +19,7 @@ class TestSubprocessCheckOutput(unittest.TestCase):
 
 class TestBytesToReadable(unittest.TestCase):
 
-    def test_output(self):
+    def test_return(self):
         blocks = 1
         self.assertEqual(diskspace.bytes_to_readable(blocks), '512.00B')
         blocks = 100
@@ -45,7 +44,7 @@ class TestPrintTree(unittest.TestCase):
         self.largest_size = 8
         self.total_size = 340
 
-    def test_print(self):
+    def test_output(self):
         system_output = StringIO.StringIO()
         sys.stdout = system_output
 
